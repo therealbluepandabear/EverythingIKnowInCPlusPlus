@@ -1,6 +1,7 @@
 #include <iostream>
 #include <thread>
 #include <Windows.h>
+#include <stdlib.h>
 
 class ConsoleInstance {
 public:
@@ -39,9 +40,7 @@ int main() {
     std::string input;
 
     consoleInstance.Write("Are you ready to start the adventure?").ThenInsertNewLine(1);
-
     std::cin >> input;
-
     if (ToLower(input) == "y" || ToLower(input) == "yy" || ToLower(input) == "yes") {
         consoleInstance.Write("Let's begin. Oh wait, we just did! One of the first things I learned was how to create a function that turns a text into a lowercase")
             .ThenInsertNewLine(1)
@@ -54,7 +53,6 @@ int main() {
         std::cin >> input;
 
         std::cout << ToLower(input) << "\n";
-
         consoleInstance.Write("First of all, in C++ you can specify comments in two ways:")
             .ThenInsertNewLine(2)
             .ThenWaitFor(800)
@@ -68,6 +66,11 @@ int main() {
             .ThenInsertNewLine(1)
             .ThenWaitFor(800)
             .Write("/* Multiline comment */");
+
+        consoleInstance.Write("Every program starts with a 'Hello World'!")
+            .ThenInsertNewLine(2)
+            .ThenWaitFor(800)
+            .Write("In C++, to output something to the console, we use 'std::cout << '(your text)', we use the insertion operator for this.");
     } else {
         consoleInstance.Write("That's a shame...");
     }
