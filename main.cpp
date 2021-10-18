@@ -21,6 +21,11 @@ public:
         }
         return *this;
     }
+
+    ConsoleInstance Clear() {
+        ConsoleInstance it = *this;
+        return it.ThenInsertNewLine(15);
+    }
 };
 
 std::string ToLower(std::string &str) {
@@ -67,14 +72,16 @@ int main() {
             .ThenWaitFor(800)
             .Write("/* Multiline comment */")
             .ThenInsertNewLine(2)
-            .ThenWaitFor(800);
+            .ThenWaitFor(2000)
+            .Clear();
 
         consoleInstance.Write("Every program starts with a 'Hello World'!")
             .ThenInsertNewLine(2)
             .ThenWaitFor(800)
             .Write("In C++, to output something to the console, we use 'std::cout << '(your text)', we use the insertion operator for this.")
             .ThenInsertNewLine(2)
-            .ThenWaitFor(800);
+            .ThenWaitFor(2000)
+            .Clear();
 
         consoleInstance.Write("Let's have a look at the type system...")
             .ThenInsertNewLine(2)
@@ -86,7 +93,8 @@ int main() {
             .ThenWaitFor(800)
             .Write("'void' is a special type used with pointers and functions.")
             .ThenInsertNewLine(2)
-            .ThenWaitFor(800);
+            .ThenWaitFor(2000)
+            .Clear();
     } else {
         consoleInstance.Write("That's a shame...");
     }
