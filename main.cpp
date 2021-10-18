@@ -3,14 +3,22 @@
 #include <Windows.h>
 
 class ConsoleInstance {
-    ConsoleInstance* Write(std::string &str) {
+public:
+    ConsoleInstance Write(const std::string &str) {
         std::cout << str;
-        return this;
+        return *this;
     }
 
-    ConsoleInstance* ThenWaitFor(int milliseconds) {
+    ConsoleInstance ThenWaitFor(const int milliseconds) {
         Sleep(milliseconds);
-        return this;
+        return *this;
+    }
+
+    ConsoleInstance ThenInsertNewLine(const int amount) {
+        for (int i = 0; i < amount; i++) {
+            std::cout << "\n";
+        }
+        return *this;
     }
 };
 
@@ -22,17 +30,24 @@ std::string ToLower(std::string &str) {
 }
 
 int main() {
-    std::cout << "-- Welcome to everything I know in C++! --" << "\n";
+    ConsoleInstance consoleInstance;
+
+    consoleInstance.Write("-- Welcome to everything I know in C++! --")
+        .ThenInsertNewLine(1)
+        .ThenWaitFor(800);
 
     std::string input;
 
-    std::cout << "Are you ready to start the adventure?" << "\n";
+    consoleInstance.Write("Are you ready to start the adventure?").ThenInsertNewLine(1);
 
     std::cin >> input;
 
     if (ToLower(input) == "y" || ToLower(input) == "yy" || ToLower(input) == "yes") {
-        std::cout << "Let's begin. Oh wait, we just did! One of the first things I learned was how to create a function that turns a text into a lowercase" << "\n";
-        std::cout << "Try and input something into the console and see how it magically turns into all lowercase:" << "\n";
+        consoleInstance.Write("Let's begin. Oh wait, we just did! One of the first things I learned was how to create a function that turns a text into a lowercase")
+            .ThenInsertNewLine(1)
+            .ThenWaitFor(800)
+            .Write("Try and input something into the console and see how it magically turns into all lowercase:")
+            .ThenInsertNewLine(1);
 
         std::string input_two;
 
@@ -40,17 +55,21 @@ int main() {
 
         std::cout << ToLower(input) << "\n";
 
-        std::cout << "First of all, in C++ you can specify comments in two ways:" << "\n";
-        Sleep(800);
-        std::cout << "\n" << "First like this: " << "\n";
-        Sleep(800);
-        std::cout << "// your comment" << "\n";
-        Sleep(800);
-        std::cout << "\n" << "Or like this for multiline comments:" << "\n";
-        Sleep(800);
-        std::cout << "/* Multiline comment */" << "\n";
+        consoleInstance.Write("First of all, in C++ you can specify comments in two ways:")
+            .ThenInsertNewLine(2)
+            .ThenWaitFor(800)
+            .Write("First like this: ")
+            .ThenInsertNewLine(1)
+            .ThenWaitFor(800)
+            .Write("// your comment")
+            .ThenInsertNewLine(2)
+            .ThenWaitFor(800)
+            .Write("Or like this for multiline comments:")
+            .ThenInsertNewLine(1)
+            .ThenWaitFor(800)
+            .Write("/* Multiline comment */");
     } else {
-        std::cout << "That's a shame." << "\n";
+        consoleInstance.Write("That's a shame...");
     }
 
     std::flush(std::cout);
