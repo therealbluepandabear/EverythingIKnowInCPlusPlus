@@ -1,8 +1,18 @@
 #include <iostream>
-#include <unistd.h>
-#include <chrono>
 #include <thread>
 #include <Windows.h>
+
+class ConsoleInstance {
+    ConsoleInstance* Write(std::string &str) {
+        std::cout << str;
+        return this;
+    }
+
+    ConsoleInstance* ThenWaitFor(int milliseconds) {
+        Sleep(milliseconds);
+        return this;
+    }
+};
 
 std::string ToLower(std::string &str) {
     for (char &ch : str) {
