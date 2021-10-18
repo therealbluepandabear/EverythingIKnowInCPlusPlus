@@ -36,7 +36,7 @@ int main() {
         Sleep(800);
         std::cout << "// your comment" << "\n";
         Sleep(800);
-        std::cout << "Or like this for multiline comments:" << "\n";
+        std::cout << "\n" << "Or like this for multiline comments:" << "\n";
         Sleep(800);
         std::cout << "/* Multiline comment */" << "\n";
     } else {
