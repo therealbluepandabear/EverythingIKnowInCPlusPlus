@@ -1,11 +1,11 @@
 #include <iostream>
 #include <thread>
 #include <Windows.h>
-#include <stdlib.h>
 
 class ConsoleInstance {
 public:
     ConsoleInstance Write(const std::string &str) {
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 5);
         std::cout << str;
         return *this;
     }
@@ -65,12 +65,30 @@ int main() {
             .Write("Or like this for multiline comments:")
             .ThenInsertNewLine(1)
             .ThenWaitFor(800)
-            .Write("/* Multiline comment */");
+            .Write("/* Multiline comment */")
+            .ThenInsertNewLine(1);
 
         consoleInstance.Write("Every program starts with a 'Hello World'!")
             .ThenInsertNewLine(2)
             .ThenWaitFor(800)
-            .Write("In C++, to output something to the console, we use 'std::cout << '(your text)', we use the insertion operator for this.");
+            .Write("In C++, to output something to the console, we use 'std::cout << '(your text)', we use the insertion operator for this.")
+            .ThenInsertNewLine(1);
+
+        consoleInstance.Write("Let's have a look at the type system...")
+            .ThenInsertNewLine(1)
+            .ThenWaitFor(800)
+            .Write("Some of C++ integral types include bool, char, wchar_t, char16_t, char32_t, short, int, and long.")
+            .ThenInsertNewLine(1)
+            .ThenWaitFor(800)
+            .Write("Floating point types are represented through float and double.")
+            .ThenWaitFor(800)
+            .Write("'void' is a special type used with pointers and functions.")
+            .ThenInsertNewLine(1);
+
+
+
+
+
     } else {
         consoleInstance.Write("That's a shame...");
     }
