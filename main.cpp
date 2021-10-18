@@ -95,6 +95,24 @@ int main() {
             .ThenInsertNewLine(2)
             .ThenWaitFor(2000)
             .Clear();
+
+        consoleInstance.Write("C++ also provides modifiers that help modify the meaning of the type, for example signed, unsigned, short, long.")
+                .ThenInsertNewLine(1)
+                .ThenWaitFor(800)
+                .Write("Signed and unsigned can only be used on integrals – not on floating point types.")
+                .ThenInsertNewLine(1)
+                .ThenWaitFor(800)
+                .Write("All types can be qualified with qualifiers, for example const, volatile, static.")
+                .ThenInsertNewLine(1)
+                .ThenWaitFor(800)
+                .Write("All the types occupy memory and can hold a range of values. The memory requirement of the type depends on the requirement of the platform.")
+                .ThenInsertNewLine(1)
+                .ThenWaitFor(800)
+                .Write("On a 16-bit platform, an integer may require 16 bits of memory, while on a 32 bit it will require 32 bits of memory.")
+                .ThenInsertNewLine(2)
+                .ThenWaitFor(2000)
+                .Clear();
+
     } else {
         consoleInstance.Write("That's a shame...");
     }
