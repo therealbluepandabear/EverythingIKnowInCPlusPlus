@@ -1,4 +1,8 @@
 #include <iostream>
+#include <unistd.h>
+#include <chrono>
+#include <thread>
+#include <Windows.h>
 
 std::string ToLower(std::string &str) {
     for (char &ch : str) {
@@ -24,10 +28,22 @@ int main() {
 
         std::cin >> input;
 
-        std::cout << ToLower(input);
+        std::cout << ToLower(input) << "\n";
 
+        std::cout << "First of all, in C++ you can specify comments in two ways:" << "\n";
+        Sleep(800);
+        std::cout << "\n" << "First like this: " << "\n";
+        Sleep(800);
+        std::cout << "// your comment" << "\n";
+        Sleep(800);
+        std::cout << "Or like this for multiline comments:" << "\n";
+        Sleep(800);
+        std::cout << "/* Multiline comment */" << "\n";
     } else {
         std::cout << "That's a shame." << "\n";
     }
+
+    std::flush(std::cout);
+
     return 0;
 }
